@@ -20,7 +20,8 @@ from readDB import ReadMongoData as db
 import plotly.graph_objects as pgo
 
 # To run locally
-# app = dash.Dash("app")
+# app = dash.Dash(__name__)
+# dash_app = dash.Dash(__name__)
 # app = dash_app.Dash("app")
 
 # To run as service in Azure or similar
@@ -84,12 +85,12 @@ fig5 = px.histogram(df2,
                         3: 'green'
                     })
 
-fig7 = px.histogram(df2,
-                    x="PkgName",
-                    y="BasePrice",
-                    nbins=10,
-                    color="Agent Name",
-                    title="Packages By Agent")
+# fig7 = px.histogram(df2,
+#                     x="PkgName",
+#                     y="BasePrice",
+#                     nbins=10,
+#                     color="Agent Name",
+#                     title="Packages By Agent")
 
 # fig2.update_traces(xbins_size="M3")
 # fig2.update_xaxes(showgrid=True,
@@ -132,12 +133,15 @@ app.layout = html.Div(children=[
                          page_size=30),
     dcc.Graph(figure=fig1),
     dcc.Graph(figure=fig5),
-    dcc.Graph(figure=fig7),
+    # dcc.Graph(figure=fig7),
     dcc.Graph(figure=fig2)
 ])
 
+# Run on remote server
 if __name__ == '__main__':
     dash.app.run_server(debug=True)
 
+# Run locally
+# app.run_server(debug=True)
 # To run locally comment out the if statement above
 # and then the following line should be: app.run_server(debug=True)

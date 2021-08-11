@@ -140,4 +140,7 @@ booking_details_by_customer = pd.merge(bookings_with_details,
 booking_details_by_packages = pd.merge(bookings_with_details,
                                        myPackages,
                                        on="PackageId")
-# Dataset for: bookings, bookingDetails, agent, and class
+
+booking_sales_by_region_by_agent = pd.merge(booking_sales_by_customer_by_agent,
+                                            myRegions,
+                                            on="RegionId")
